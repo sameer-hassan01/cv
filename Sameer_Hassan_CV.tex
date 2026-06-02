@@ -1,0 +1,155 @@
+%-----------------------------------------------------------------
+%  Sameer Hassan — CV
+%  Compile with:   pdflatex Sameer_Hassan_CV.tex   (run twice)
+%  Or on Overleaf: upload the file and click Recompile
+%-----------------------------------------------------------------
+\documentclass[10pt,a4paper]{article}
+
+% -------- PACKAGES ---------------------------------------------
+\usepackage[a4paper, top=18mm, bottom=18mm, left=16mm, right=16mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}                 % Latin Modern fonts (LaTeX default look)
+\usepackage{microtype}               % nicer spacing
+\usepackage{enumitem}                % control list spacing
+\usepackage{titlesec}                % control section formatting
+\usepackage{fontawesome5}            % icons for email / phone / linkedin / github
+\usepackage[hidelinks]{hyperref}     % clickable links (no ugly boxes)
+\usepackage{xcolor}
+\usepackage{parskip}
+
+% -------- COLORS & SPACING -------------------------------------
+\definecolor{accent}{HTML}{111111}
+\setlength{\parindent}{0pt}
+\setlist[itemize]{leftmargin=*, topsep=2pt, itemsep=1pt, parsep=0pt}
+
+% -------- SECTION FORMAT ---------------------------------------
+\titleformat{\section}
+  {\large\bfseries\color{accent}}
+  {}{0pt}{}[\titlerule]
+\titlespacing*{\section}{0pt}{10pt}{4pt}
+
+% -------- HEADER COMMAND ---------------------------------------
+\newcommand{\cvheader}[5]{%
+  \begin{center}
+    {\Huge\bfseries #1}\\[6pt]
+    {\small
+      \faEnvelope\ \href{mailto:#2}{#2} \quad
+      \faPhone\ #3 \quad
+      \faLinkedin\ \href{https://#4}{#4} \quad
+      \faGithub\ \href{https://#5}{#5}
+    }
+  \end{center}
+}
+
+% -------- ENTRY COMMAND (job, project, education) --------------
+% Usage: \entry{Name}{Date}{Role/Tech}{Location/URL}
+\newcommand{\entry}[4]{%
+  \vspace{4pt}
+  \noindent\textbf{#1}\hfill #2\\
+  \noindent\textit{#3}\hfill \textit{#4}\\
+  \vspace{-6pt}
+}
+
+% Skill row
+\newcommand{\skill}[2]{\textbf{#1:} #2\\}
+
+%================================================================
+\begin{document}
+
+% -------- HEADER -----------------------------------------------
+\cvheader
+  {Sameer Hassan}
+  {sameerhassanq3@gmail.com}
+  {+92 315 3218888}
+  {linkedin.com/in/sameer-hassan-a9420a262}
+  {github.com/sameer-hassan01}
+
+% -------- PROFESSIONAL SUMMARY ---------------------------------
+\section*{Professional Summary}
+Computer Science undergraduate at Bahria University (Islamabad) with hands-on full-stack experience across mobile, web, and database systems. Solo-built \textbf{Hisaab}, an offline-first personal finance and receipt-OCR app for Pakistan, spanning a Flutter mobile client, Node.js + PostgreSQL backend, and React admin panel --- all deployed on free-tier cloud infrastructure. Comfortable across multiple stacks including C++, Python, JavaScript, PHP, and Dart; coursework focused on machine learning and data science. Actively seeking software engineering internships and junior roles.
+
+% -------- EXPERIENCE -------------------------------------------
+\section*{Experience}
+
+\entry{Binary Rewind}{May 2025 --- August 2025}
+      {Software Developer (Junior)}{Islamabad, Pakistan}
+\begin{itemize}
+  \item Collaborated with a small engineering team to ship the MVP of \textbf{FoodBook}, a community-driven food review platform; contributed alongside another developer rather than owning the project end-to-end
+  \item Implemented assigned feature slices including review submission, rating logic, and search; wrote unit tests for the modules I authored
+  \item Assisted with bug-fixing during beta, supported deployment and CI workflows, and participated in code reviews
+  \item Worked directly with designers and the product lead to translate UI specs into front-end components
+  \item \textbf{Tech Stack:} JavaScript, REST APIs, Unit Testing, CI/CD, Git
+\end{itemize}
+
+% -------- PROJECTS ---------------------------------------------
+\section*{Projects}
+
+\entry{Hisaab --- Personal Finance \& Receipt Manager (Solo)}{2026}
+      {Flutter $\cdot$ Node.js $\cdot$ PostgreSQL $\cdot$ React $\cdot$ Firebase}
+      {\href{https://github.com/sameer-hassan01/QEEMAT}{github.com/sameer-hassan01/QEEMAT}}
+\begin{itemize}
+  \item Designed and built a full-stack, offline-first personal finance app for Pakistani users featuring on-device OCR receipt scanning, expense and income tracking, budgets, subscriptions, grocery price comparison, and a rewards system
+  \item Architected three coordinated codebases solo: a \textbf{Flutter mobile app} (Riverpod, GoRouter, Dio, Hive offline cache), a \textbf{Node.js + Express REST API} backed by PostgreSQL with raw SQL via \textit{pg}, and a \textbf{React + Vite + Tailwind admin panel}
+  \item Integrated Firebase Authentication (email, Google, phone OTP) with JWT-backed API sessions, signed Cloudinary uploads, and secured every route with Helmet, rate-limiting, and express-validator
+  \item Implemented offline support via Hive cache and background sync queue, plus a rule-based local insights engine that runs without any paid LLM or external AI calls
+  \item Deployed entirely on free tiers (Render, Neon, Cloudinary, Vercel, Firebase) at zero monthly cost
+  \item \textbf{Tech Stack:} Flutter, Dart, Riverpod, Node.js, Express, PostgreSQL, React, Vite, Tailwind, Firebase, Cloudinary, Google ML Kit
+\end{itemize}
+
+\entry{CineWorld --- Cinema Ticketing \& Management System (DBMS Semester Project)}{2026}
+      {PHP $\cdot$ MySQL $\cdot$ HTML/CSS/JS}
+      {\href{https://github.com/sameer-hassan01/cinemaManagement-DBMS}{github.com/sameer-hassan01/cinemaManagement-DBMS}}
+\begin{itemize}
+  \item Built a full-stack cinema booking and management web application end-to-end: user registration with role selection, movie browsing, day/time/seat selection, mock payment flow, and printable PDF tickets via FPDF
+  \item Designed and normalised a 9-table MySQL schema covering users, movies, screenings, screens, seats, shows, bookings, contact messages, and upcoming releases
+  \item Implemented a role-guarded admin dashboard for adding, editing, and deleting movies; viewing all bookings; and reading customer messages from the contact form
+  \item Wrote every database query using \textit{mysqli} prepared statements to eliminate SQL injection vectors; hashed passwords with PHP's \textit{password\_hash} (bcrypt)
+  \item Integrated Cloudinary's free tier for movie poster hosting
+  \item \textbf{Tech Stack:} PHP, MySQL, HTML, CSS, JavaScript, Cloudinary, FPDF, XAMPP
+\end{itemize}
+
+\entry{University Coursework Projects}{2023 --- Present}
+      {C++ $\cdot$ Python $\cdot$ Qt $\cdot$ SQL $\cdot$ scikit-learn}
+      {Bahria University, Islamabad}
+\begin{itemize}
+  \item Built multiple coursework projects across Data Structures, OOP, Database Systems, and Machine Learning --- including an intrusion-detection system project and ML pipelines in Python with pandas and scikit-learn
+  \item Worked in small student teams using Git for version control, with end-to-end ML pipelines covering feature engineering, cross-validation, and model evaluation
+  \item \textbf{Tech Stack:} C++, Python, Qt, SQL, scikit-learn, Git
+\end{itemize}
+
+% -------- EDUCATION --------------------------------------------
+\section*{Education}
+
+\entry{Bahria University}{August 2023 --- Present}
+      {BS in Computer Science (specialisation: machine learning \& data science)}{Islamabad, Pakistan}
+\begin{itemize}
+  \item Relevant coursework: Machine Learning, Deep Learning, Data Mining, Probability \& Statistics, Data Structures \& Algorithms, Database Systems, Operating Systems, Computer Networks
+  \item Built end-to-end ML pipelines in Python (pandas, NumPy, scikit-learn) with feature engineering, cross-validation, and hyperparameter tuning
+\end{itemize}
+
+\entry{Islamabad College for Advanced Studies (ICAS)}{August 2021 --- June 2023}
+      {A Levels in Mathematics, Physics, \& Computer Science}{Islamabad, Pakistan}
+\begin{itemize}
+  \item Capstone project: a dynamic web application built with JavaScript and Flask
+\end{itemize}
+
+\entry{Fazaia Education System School}{June 2020 --- June 2021}
+      {O Levels --- Grade A in Computer Science}{Islamabad, Pakistan}
+\begin{itemize}
+  \item Foundational programming and problem-solving with hands-on projects in Python and basic web development
+\end{itemize}
+
+% -------- TECHNICAL SKILLS -------------------------------------
+\section*{Technical Skills}
+\skill{Languages}{C++, JavaScript / TypeScript, Python, Dart, PHP, SQL}
+\skill{Mobile}{Flutter, Dart, Riverpod, GoRouter, Hive}
+\skill{Backend \& APIs}{Node.js, Express, REST, JWT, raw SQL (\textit{pg} / \textit{mysqli}), PHP}
+\skill{Frontend}{React, Vite, Tailwind CSS, HTML5, CSS3, vanilla JavaScript}
+\skill{Databases}{PostgreSQL, MySQL / MariaDB, schema design, normalisation, prepared statements}
+\skill{Cloud \& Infrastructure}{Firebase (Auth, FCM), Cloudinary, Render, Neon, Vercel, AWS basics}
+\skill{Data \& ML}{pandas, NumPy, scikit-learn, matplotlib / seaborn, feature engineering, model evaluation}
+\skill{DevOps \& Tools}{Git, GitHub, Composer, npm, XAMPP, Linux basics, Figma, Qt}
+\skill{Other}{Google ML Kit (on-device OCR), FPDF, OpenStreetMap, Agile collaboration}
+
+\end{document}
